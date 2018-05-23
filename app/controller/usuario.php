@@ -15,6 +15,6 @@
 
         public function checarLogin(){
             // if blablabla
-            $this->tpl->CONTENT = $this->templates['naoLogado'];
+            $this->tpl->CONTENT = $this->templates['perfilLocator'];
         }
     }
