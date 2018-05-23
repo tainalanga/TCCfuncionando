@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+
+  
+</head>
+
+<body>
+
+  <div class="form">
+
+  <div class="text-vertical-center ">
+   <h1 class="homie">Homie</h1> 
+   </div>
+
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Criar Conta</a></li>
+        <li class="tab"><a href="#login">Login</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="signup" style="display:block;">   
+          <h1>Abra uma Conta</h1>
+          
+          <form action="cadastro/app/controller/usuario.php?acao=insert" method="post">
+          
+            <div class="top-row">
+              <div class="field-wrap">
+                <label>
+                  Nome<span class="req">*</span>
+                </label>
+                <input name="nome" type="text" required autocomplete="off"/>
+              </div>
+          
+              <div class="field-wrap">
+                <label>
+                  Sobrenome<span class="req">*</span>
+                </label>
+                <input name="sobrenome" type="text" required autocomplete="off"/>
+              </div>
+            </div>           
+           <div class="top-row">
+              <div class="field-wrap">
+                <label>
+                  Estado<span class="req">*</span>
+                </label>
+                <input name="estado" type="text" />
+              </div>
+          
+              <div class="field-wrap">
+                <label>
+                  Cidade de Origem<span class="req">*</span>
+                </label>
+                <input name="cidade" type="text" required autocomplete="off"/>
+              </div>
+            </div>
+            <div class="top-row">
+              <div class="field-wrap">
+                <label>
+                  <span class="req"></span>
+                </label>
+
+               <input type="date" class="dt_nasc" required name="bday">
+               </div>
+
+               <div class="field-wrap">
+              <label>
+                E-mail<span class="req">*</span>
+              </label>
+              <input name="email" type="email" required autocomplete="off"/>
+              </div>
+            </div> 
+            <div class="top-row">
+              <div class="field-wrap">
+                <label>
+                  Senha<span class="req">*</span>
+                </label>
+                <input name="senha" type="password" required autocomplete="off"/>
+              </div>
+          
+              <div class="field-wrap">
+                <label>
+                  Confirmar senha<span class="req">*</span>
+                </label>
+                <input name="confirmação" type="password" required autocomplete="off"/>
+              </div>
+            </div>            
+      
+            
+            <button type="submit" name="cadastrar" class="button button-block"/>Finalizar</button>
+            
+          </form>
+
+        </div>
+      </div>
+
+      <div class="tab-content"> 
+          <div id="login">   
+             <h1>Bem Vindo de Novo!</h1> 
+          
+             <form action="loginUsuario.php" method="post">
+          
+               <div class="field-wrap">
+                <label>
+                  E-mail<span class="req">*</span>
+                </label>
+                <input name="email" type="email"required autocomplete="off"/>
+               </div>
+          
+               <div class="field-wrap">
+                <label>
+                  Senha<span class="req">*</span>
+                </label>
+                <input name="senha" type="password"required autocomplete="off"/>
+               </div>
+          
+                <p class="forgot"><a href="#">Esqueceu sua senha?</a></p>
+          
+               <button type="submit" class="button button-block">Entrar</button>
+             </form>
+
+        </div>
+        
+      </div> 
+      
+</div> <!--/form -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
