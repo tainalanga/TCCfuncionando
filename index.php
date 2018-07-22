@@ -1,24 +1,42 @@
 <?php
-    // RAEL CUNHA TEMPLATES
+    session_start();
+    
+    require_once("lib/slim/autoload.php");
     require_once("lib/template/raelgc/view/Template.php");
     require_once("lib/Medoo/Medoo.php");
 
-    foreach (glob("app/**/*.php") as $filename){
-        include $filename;
-    }
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator('app/views/')) as $filename){
+        $parsed = str_replace('app/views/', '', $filename);
+        $parsed = str_replace('.html', '', $parsed);
 
-    $templates = [];
-    foreach (glob("app/views/*.html") as $filename){
-        $templates[basename($filename, ".html")] = file_get_contents($filename);
+        if(!(strpos($parsed, '.') !== false)){
+            $templates[$parsed] = $filename.'';
+        }
     }
 
     use raelgc\view\Template;
+    use \Slim\App;
+
+
     $tpl = new Template('app/views/index.html');
+    
+    foreach (glob("app/models/*.php") as $filename){
+        include $filename;
+    }
+    
+    foreach (glob("app/controller/*.php") as $filename){
+        include $filename;
+    }
 
-    $usuarioController = new Usuario($tpl, $templates);
-    $usuarioController->checarLogin();
-    $tpl = $usuarioController->returnTemplate();
+    $app = new App([
+        'settings' => [
+            'displayErrorDetails' => true
+        ]
+    ]);
 
+    foreach (glob("app/routes/*.php") as $filename){
+        include $filename;
+    }
 
-    $tpl->show();
+    $app->run();
 ?>

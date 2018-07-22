@@ -1,112 +1,124 @@
-    <link rel="stylesheet" type="text/css" href="css/casa.css">
-    <div class="meio">
-        <div class="container-fluid col-md-8 teste">
-            <h2></h2>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="img/casadentro.jpg" style="width:100%;">
-                    </div>
-
+<body>
+    <div class="ui fixed top menu">
+        <a href="javascript:void(0)" class="icon active item" id="hideToggle"><h3><i class="chevron left icon"></i></h3></a>
+        <a href="javascript:void(0)" class="icon active item" id="showToggle"><h3><i class="chevron right icon"></i></h3></a>
+        <a href="dashboard.html" data-toggle="slide" class="item"><h3>HOMIE</h3></a>
+        <div class="menu right">
+            <a class="icon item pointer" data-toggle="popup" data-content="#mail" data-position="bottom right"></a>
+            <div id="mail" class="ui fluid popup" style="min-width:400px;padding-top:30px;">
+                <div class="ui divided items">
                     <div class="item">
-                        <img src="img/casadentro2.jpg" style="width:100%;">
+                        </div>
                     </div>
-
+                </div>
+          </div>
+            <a class="icon item pointer" data-toggle="popup" data-content="#notif" data-position="bottom right"><i class="bell icon"></i></a>
+            <div id="notif" class="ui fluid popup" style="min-width:400px;padding-top:30px;">
+                <div class="ui divided items">
                     <div class="item">
-                        <img src="img/casadentro3.jpg" style="width:100%;">
-                    </div>
-                </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-        <div>
-            <h3 class="inform pull-left">
-                <img src="">
-                <br>
-                <br>
-                <br> 3 quartos
-                <br> 2 Integrantes interessados
-                <br> Próximo a UFSC
-                <br> Para 3 pessoas
-                <br> 1 banheiro</h3>
-        </div>
-
-
-        <div class="row pull-right">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/user_photos/000/332/699/datas/profile.jpg"
-                                    class="img-responsive">
+                        <div class="content">
+                            <i class="bell icon"></i> Illum ratione aliquam veniam voluptates porro,
+                            <div class="extra content">
+                                Sunday, 20-03-2016
                             </div>
-                            <div class="col-md-8">
-                                <h6>Nome: James Beriola</h6>
-                                <p style="font-size: 12px;">Idade: 20 anos</p>
-                                <p style="font-size: 12px;">Universidade: UFSC</p>
-                                <p style="font-size: 12px;">Cidade Natal: Porto Alegre, RS</p>
-                                <p style="font-size: 12px;">Sobre: Engraçado, organizado e competitivo</p>
-                                <p style="font-size: 12px;">Curso: Sistema de Informação</p>
-
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <i class="bell icon"></i> Facere, quas maxime at consequuntur
+                            <div class="extra content">
+                                Sunday, 20-03-2016
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <i class="bell icon"></i> Officiis ex sint distinctio.
+                            <div class="extra content">
+                                Sunday, 20-03-2016
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="ui divider"></div>
+                <a href="" class="ui right floated tiny button">All Notification</a>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="img/mulher.jpg" class="img-responsive">
-                            </div>
-                            <div class="col-md-8">
-                                <h6>Nome: Camila Peregrine</h6>
-                                <p style="font-size: 12px;">Idade: 19 anos</p>
-                                <p style="font-size: 12px;">Universidade: UFSC</p>
-                                <p style="font-size: 12px;">Cidade Natal: Salto do Lontra, PR</p>
-                                <p style="font-size: 12px;">Sobre: Divertida, curiosa e comunicativa.</p>
-                                <p style="font-size: 12px;">Curso: Artes Cenicas.</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="img/usuario.jpg" class="img-responsive">
-                            </div>
-                            <div class="col-md-8">
-                                <h6>Interessado em dividir este aluguel?</h6>
-                                <button class="btn btn-primary btn-xs">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                    Alugar</button>
-
-                            </div>
-                        </div>
-                    </div>
+            <a class="icon item pointer" data-toggle="popup" data-content="#user" data-position="bottom right"><img src="assets/img/people_4.jpg" class="ui avatar image" alt=""></a>
+            <div id="user" class="ui popup">
+                <div class="ui secondary vertical menu">
+                    <div class="header item">USER MENU</div>
+                    <a href="" class="item">Profile <i class="user icon"></i></a>
+                    <a href="" class="item">Groups <i class="users icon"></i></a>
+                    <a href="" class="item">Settings <i class="settings icon"></i></a>
+                    <div class="ui divider"></div>
+                    <a href="index.html" class="item">Logout <i class="sign out icon"></i></a>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pusher">
+        <div class="ui fluid container">
+            <div class="ui two column grid">
+                <div class="side menu" id="sideMenu">
+                    <div align="center" class="profile">
+                        <br>
+                        <a href=""><img src="assets/img/people_4.jpg" alt="Marry Doe" class="ui circular image" width="150px"></a>
+                        <div class="ui white header">Marry Doe</div>
+                        <div class="ui divider"></div>
+                    </div>
+                    <div class="ui fluid vertical menu" id="verticalMenu">
+                        <a href="dashboard.html" class="item"><span>Meus imóveis</span></a>
+                     </div>
+                </div>
+                <div class="sixteen wide column" id="content">
+                    <div class="ui one column stackable grid ui form">
+
+                        <div class="column">
+                            <div class="ui segments">
+                                <img src="img/casaa3.jpg" style="width: 40%" >
+                            </div>
+                            <div class="ui segments">
+                                <img src="img/casadentro2.jpg" style="width: 30%" >
+                                <img src="img/casa8.jpg" style="width: 30%" height="184px">
+                                <img src="img/casaa4.jpg" style="width: 30%" height="184px" >
+                                <div class="ui segment">
+
+
+                              <div class="ui three column very relaxed grid">
+                                  <div class="column">
+                                    <img class="ui mini circular image" src="img/mulher.jpg">
+                                    <div class="content">
+                                    <div class="ui sub header">Molly</div>Estudante de Psicologia </div>
+                                  </div>
+                                  </div>
+                                    <div class="ui three column very relaxed grid">
+                                        <div class="column">
+                                            <img class="ui mini circular image" src="img/mulher.jpg">
+                                            <div class="content">
+                                                <div class="ui sub header">Molly</div>Estudante de Psicologia </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/semantic.min.js"></script>
+    <script type="text/javascript" src="assets/js/nicescroll.min.js"></script>
+
+    <!-- Include AmCharts -->
+    <script type="text/javascript" src="assets/js/amcharts/amcharts.js"></script>
+    <script type="text/javascript" src="assets/js/amcharts/serial.js"></script>
+    <script type="text/javascript" src="assets/js/amcharts/themes/light.js"></script>
+
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/graph.js"></script>
+</body>
+</html>

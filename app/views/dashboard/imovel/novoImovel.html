@@ -1,0 +1,30 @@
+<!-- BEGIN BLOCK_MESSAGE -->
+{MESSAGE}
+<!-- END BLOCK_MESSAGE -->
+<form class="ui form"  enctype="multipart/form-data" method='POST'>
+    <div class="field">
+        <label>Endereço</label>
+        <div class="fields">
+            <div class="twelve wide field">
+                <input type="text" name="Endereço" placeholder="Endereço" value='{ENDERECO}'>
+            </div>
+            <div class="four wide field">
+                <input type="number" name="Número" placeholder="Número" min="0" value='{NUMERO}'>
+            </div>
+            <div class="four wide field">
+                <input type="number" name="Limite de pessoas" placeholder="Limite pessoas" min="2" value='{LIMITE_PESSOAS}'>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <div class="four wide field">
+            Fotos
+            <input type="file" name="Foto Imovel" id="fileToUpload">            
+        </div>
+    </div>
+    <div class="field">
+        <label>Descrição</label>
+        <textarea name="Descrição">{DESCRICAO}</textarea>
+    </div>
+    <button class="ui button" type="submit">Enviar</button>
+</form>

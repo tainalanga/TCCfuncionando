@@ -11,7 +11,8 @@ class DB extends Medoo{
             'database_name' => 'homie',
             'server' => 'localhost',
             'username' => 'root',
-            'password' => ''
+            'password' => '',
+            'charset' => 'utf8'
         ]);
     }
 }
