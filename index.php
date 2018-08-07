@@ -5,8 +5,10 @@
     require_once("lib/template/raelgc/view/Template.php");
     require_once("lib/Medoo/Medoo.php");
 
+    $templates = [];
+
     foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator('app/views/')) as $filename){
-        $parsed = str_replace('app/views/', '', $filename);
+	$parsed = substr($filename, 10);
         $parsed = str_replace('.html', '', $parsed);
 
         if(!(strpos($parsed, '.') !== false)){
