@@ -5,7 +5,7 @@
                 Cadastre-se
             </div>
         </h2>
-        <form class="ui large form" method="POST">
+        <form class="ui large form" method="POST" enctype="multipart/form-data">
             <!-- BEGIN BLOCK_MESSAGE -->
             {MESSAGE}
             <!-- END BLOCK_MESSAGE -->
@@ -61,6 +61,12 @@
                     <label>Preferências</label>
                     <textarea name="Preferencias"></textarea>
                 </div>
+                <div class="field">
+                    <div class="four wide field">
+                        Fotos
+                        <input type="file" name="Foto de Perfil">            
+                    </div>
+                </div>
                 <button type="submit" class="ui fluid large teal submit button">
                     Cadastrar
                 </button>
@@ -72,12 +78,7 @@
     body {
         background-color: #DADADA;
     }
-    body > .grid {
-        height: 100%;
-    }
-    .image {
-        margin-top: -100px;
-    }
+
     .column {
         max-width: 450px;
     }

@@ -13,10 +13,16 @@
     })->setName('landingPage');
 
 
-    $app->get('/register', function () use ($tpl, $templates) {
+    $app->get('/register', function (Request $request, Response $response) use ($tpl, $templates) {
         $tpl->addFile("CONTENT", $templates['formulario']);
         $tpl->show();
     });
+
+
+    $app->get('/logout', function (Request $request, Response $response) use ($tpl, $templates) {
+        Usuario::logout();
+        return $response->withRedirect($this->router->pathFor('landingPage'));
+    })->setName('logout');
 
     $app->post('/register', function (Request $request, Response $response) use ($tpl, $templates) {
         $tpl->addFile("CONTENT", $templates['formulario']);
@@ -30,6 +36,14 @@
     
                 $error = 1;
             }
+        }
+
+        if(empty($_FILES["Foto_de_Perfil"]["tmp_name"]) && empty($args['id'])){
+            $tpl->addFile("MESSAGE", $templates['messages/error']);
+            $tpl->MESSAGE_ERROR_TEXT = "Foto vazia!";
+            $tpl->block("BLOCK_MESSAGE");
+
+            $error = 1;
         }
 
         if($_POST['Senha'] != $_POST['Confirmar_senha']){
@@ -55,7 +69,22 @@
         $tpl->show();
     });
 
-    $app->post('/login', function () use ($tpl, $templates) {
-        $tpl->addFile("CONTENT", $templates['login']);
-        $tpl->show();
+    $app->post('/login', function (Request $request, Response $response) use ($tpl, $templates) {
+        if(!empty($_POST['Email']) && !empty($_POST['Senha'])){
+            $usuario = new Usuario;
+            $usuario->logar(null, $_POST['Email'], $_POST['Senha']);
+            return $response->withRedirect($this->router->pathFor('dashboard')); 
+        }else{
+            $tpl->addFile("CONTENT", $templates['login']);
+            foreach($_POST as $input=>$value){
+                if(empty($value)){
+                    $tpl->addFile("MESSAGE", $templates['messages/error']);
+                    $tpl->MESSAGE_ERROR_TEXT = "Formulário $input Vazio!";
+                    $tpl->block("BLOCK_MESSAGE");
+        
+                    $error = 1;
+                }
+            }
+            $tpl->show();
+        }
     });

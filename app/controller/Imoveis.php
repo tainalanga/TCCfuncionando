@@ -22,6 +22,7 @@
                 "numero"            => $imovel['Número'], 
                 "endereco"          => $imovel['Endereço'], 
                 "descricao"         => $imovel['Descrição'], 
+                "tipo"              => $imovel['Tipo_Imovel'],
                 "limite_pessoas"    => $imovel['Limite_de_pessoas'],
                 "usuario_id"        => $_SESSION['user'], 
                 "universidades_id"  => 1        

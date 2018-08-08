@@ -4,6 +4,7 @@
             $usuarioController = new Usuario($_SESSION['user']);
             $tpl->addFile("CONTENT", $templates['dashboard/dashboardVazio']);
             $tpl->USUARIO_NOME = $usuarioController->usuario['nome'];
+            $tpl->USUARIO_ID   = $usuarioController->usuario['id'];
         }else{
             return $response->withRedirect($this->router->pathFor('landingPage'));
         }
@@ -17,7 +18,7 @@
 
         $imoveis = new Imoveis();
         foreach($imoveis->imoveis as $imovel){
-            $tpl->addFile("IMOVEIS", $templates['card']);
+            $tpl->addFile("IMOVEIS", $templates['imovel/card']);
             $tpl->ID = $imovel['id'];
             $tpl->ENDERECO = $imovel['endereco'];
             $tpl->LIMITE_PESSOAS = $imovel['limite_pessoas'];
@@ -34,7 +35,7 @@
         return $response;
     })->setName('dashboard')->add($dashboardMW);
 
-    $app->get('/dashboard/imovel/editar/{id}', function ($request, $response, $args) use ($tpl, $templates) {
+    $app->get('/dashboard/imovel/editar[/{id:.*}]', function ($request, $response, $args) use ($tpl, $templates) {
         $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/imovel/novoImovel']);
 
         if(!empty($args['id'])){
@@ -48,7 +49,7 @@
         $tpl->show();
     })->add($dashboardMW);
 
-    $app->post('/dashboard/imovel/editar/{id}', function ($request, $response, $args) use ($tpl, $templates) {
+    $app->post('/dashboard/imovel/editar[/{id:.*}]', function ($request, $response, $args) use ($tpl, $templates) {
         $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/imovel/novoImovel']);
         $error = 0;
         
@@ -93,3 +94,32 @@
 
         $tpl->show();
     })->add($dashboardMW);
+
+    $app->get('/dashboard/meusimoveis/', function ($request, $response) use ($tpl, $templates) {
+        $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/imovel/meusImoveis']);
+
+        $imoveis = new Imoveis();
+        $imoveis_encontrados = 0;
+        foreach($imoveis->imoveis as $imovel){
+
+            if($imovel['usuario_id'] == $_SESSION['user']){
+                $tpl->addFile("IMOVEIS", $templates['imovel/card']);
+                $tpl->ID = $imovel['id'];
+                $tpl->ENDERECO = $imovel['endereco'];
+                $tpl->LIMITE_PESSOAS = $imovel['limite_pessoas'];
+                $tpl->DESCRICAO = $imovel['descricao'];
+                $tpl->EDITAR = '<a href="dashboard/imovel/editar/'.$imovel['id'].'"><i class="edit icon" style="float:right;"></i></a>';
+                $tpl->block("BLOCK_IMOVEIS");
+                $imoveis_encontrados = 1;
+            }
+        }
+
+        if($imoveis_encontrados == 0){
+            $tpl->addFile("MESSAGE", $templates['messages/error']);
+            $tpl->MESSAGE_ERROR_TEXT = "Nenhum imóvel encontrado";
+            $tpl->block("BLOCK_MESSAGE");
+        }
+
+        $tpl->show();
+        return $response;
+    })->setName('dashboard')->add($dashboardMW);

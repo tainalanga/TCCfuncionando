@@ -6,18 +6,30 @@
         function __construct($id = null){
             parent::__construct();
 
-            if(isset($id)){
+            if(isset($id) && $id != null){
                 $this->usuario = $this->medoo->select("usuarios", '*',[
                     "id" => $id
                 ])[0];
             }
         }
 
-        
-
-        public function logar($id)
+        public function logar($id = null, $email = null, $senha = null)
         {
+            if($id == null && $email != null && $senha != null){
+                $id = $this->medoo->select("usuarios", 'id',[
+                    "email" => $email,
+                    "senha" => $senha
+                ])[0];
+            }
+
             $this->__construct($_SESSION['user'] = $id);
+            return true;
+        }
+
+        public function logout()
+        {
+            if(isset($_SESSION['user']))
+                unset($_SESSION['user']);
             return true;
         }
 
@@ -45,6 +57,8 @@
                 "preferencias"      => $_POST['Preferencias'], 
                 "data_nascimento"   => $_POST['Data_de_nascimento']        
             ]);
+
+            move_uploaded_file($_FILES['Foto_de_Perfil']['tmp_name'], "uploads/" . $this->medoo->id() . '.jpg');
 
             return $this->logar($this->medoo->id());
         }
