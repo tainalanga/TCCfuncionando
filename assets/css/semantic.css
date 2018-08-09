@@ -3695,7 +3695,7 @@ input::selection {
 
 .ui.teal.buttons .button,
 .ui.teal.button {
-  background-color: #00b5ad;
+  background-color: black;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -3707,14 +3707,14 @@ input::selection {
 
 .ui.teal.buttons .button:hover,
 .ui.teal.button:hover {
-  background-color: #009c95;
+  background-color: black;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.teal.buttons .button:focus,
 .ui.teal.button:focus {
-  background-color: #008c86;
+  background-color: black;
   color: #ffffff;
   text-shadow: none;
 }
@@ -3730,7 +3730,7 @@ input::selection {
 .ui.teal.buttons .active.button:active,
 .ui.teal.active.button,
 .ui.teal.button .active.button:active {
-  background-color: #009c95;
+  background-color: black;
   color: #ffffff;
   text-shadow: none;
 }
@@ -6640,7 +6640,7 @@ a.ui.inverted.green.header:hover {
 /*--- Teal ---*/
 
 .ui.teal.header {
-  color: #00b5ad !important;
+  color: black !important;
 }
 
 a.ui.teal.header:hover {
@@ -7302,7 +7302,7 @@ i.inverted.teal.icon {
 
 i.inverted.bordered.teal.icon,
 i.inverted.circular.teal.icon {
-  background-color: #00b5ad !important;
+  background-color: black !important;
   color: #ffffff !important;
 }
 
@@ -14452,6 +14452,7 @@ ol.ui.horizontal.list li:before,
   padding: 1em 1em;
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
+
 }
 
 .ui.segment:first-child {
@@ -15148,10 +15149,9 @@ ol.ui.horizontal.list li:before,
 
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
-  background: #1b1c1d;
+  background-image: url(../img/fundo.jpg);
   color: rgba(255, 255, 255, 0.9);
 }
-
 /* Nested */
 
 .ui.inverted.segment .segment {
@@ -18626,6 +18626,7 @@ ol.ui.horizontal.list li:before,
   -webkit-align-self: center !important;
   -ms-flex-item-align: center !important;
   align-self: center !important;
+  margin-top: auto;
 }
 
 /* Bottom Aligned */
