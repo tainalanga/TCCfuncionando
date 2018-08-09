@@ -15,10 +15,9 @@
 
     $app->get('/dashboard', function ($request, $response) use ($tpl, $templates) {
         $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/imovel/todosImoveis']);
-
         $imoveis = new Imoveis();
         foreach($imoveis->imoveis as $imovel){
-            $tpl->addFile("IMOVEIS", $templates['imovel/card']);
+            $tpl->addFile("IMOVEIS", $templates['dashboard/imovel/card']);
             $tpl->ID = $imovel['id'];
             $tpl->ENDERECO = $imovel['endereco'];
             $tpl->LIMITE_PESSOAS = $imovel['limite_pessoas'];
