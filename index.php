@@ -27,10 +27,6 @@
         include $filename;
     }
     
-    foreach (glob("app/controller/*.php") as $filename){
-        include $filename;
-    }
-
     $app = new App([
         'settings' => [
             'displayErrorDetails' => true
