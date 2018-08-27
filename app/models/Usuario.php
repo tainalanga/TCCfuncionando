@@ -62,4 +62,21 @@
 
             return $this->logar($this->medoo->id());
         }
+
+        public function editar($usuario, $id)
+        {
+            $this->medoo->update("usuarios", [
+                "nome"              => $usuario['Nome'], 
+                "email"             => $usuario['Email'], 
+                "senha"             => $usuario['Senha'], 
+                "genero"            => $usuario['Genero'],
+                "telefone"          => $usuario['Telefone'], 
+                "preferencias"      => $usuario['Preferencias'], 
+                "data_nascimento"   => $usuario['Data_de_nascimento']
+            ], [
+                'id' => $id
+            ]);
+
+            return true;
+        }
     }

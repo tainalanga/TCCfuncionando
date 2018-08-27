@@ -22,11 +22,6 @@
             $tpl->ENDERECO = $imovel['endereco'];
             $tpl->LIMITE_PESSOAS = $imovel['limite_pessoas'];
             $tpl->DESCRICAO = $imovel['descricao'];
-
-            if($imovel['usuario_id'] == $_SESSION['user']){
-                $tpl->EDITAR = '<a href="dashboard/imovel/editar/'.$imovel['id'].'"><i class="edit icon" style="float:right;"></i></a>';
-            }
-
             $tpl->block("BLOCK_IMOVEIS");
         }
 
@@ -36,13 +31,15 @@
 
     $app->get('/dashboard/imovel/editar[/{id:.*}]', function ($request, $response, $args) use ($tpl, $templates) {
         $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/imovel/novoImovel']);
-
+        
         if(!empty($args['id'])){
             $imovel = new Imoveis($args['id']);
+            $tpl->UNIVERSIDADE = $imovel->imovel['universidades_id'];
             $tpl->ENDERECO = $imovel->imovel['endereco'];
             $tpl->NUMERO = $imovel->imovel['numero'];
             $tpl->LIMITE_PESSOAS = $imovel->imovel['limite_pessoas'];
             $tpl->DESCRICAO = $imovel->imovel['descricao'];
+            $tpl->TIPO = $imovel->imovel['tipo'];
         }
 
         $tpl->show();
@@ -102,12 +99,12 @@
         foreach($imoveis->imoveis as $imovel){
 
             if($imovel['usuario_id'] == $_SESSION['user']){
-                $tpl->addFile("IMOVEIS", $templates['imovel/card']);
+                $tpl->addFile("IMOVEIS", $templates['dashboard/imovel/card']);
                 $tpl->ID = $imovel['id'];
                 $tpl->ENDERECO = $imovel['endereco'];
                 $tpl->LIMITE_PESSOAS = $imovel['limite_pessoas'];
                 $tpl->DESCRICAO = $imovel['descricao'];
-                $tpl->EDITAR = '<a href="dashboard/imovel/editar/'.$imovel['id'].'"><i class="edit icon" style="float:right;"></i></a>';
+                $tpl->EDITAR = '<a href="../imovel/editar/'.$imovel['id'].'"><i class="edit icon" style="float:right;"></i></a>';
                 $tpl->block("BLOCK_IMOVEIS");
                 $imoveis_encontrados = 1;
             }
@@ -122,3 +119,46 @@
         $tpl->show();
         return $response;
     })->setName('dashboard')->add($dashboardMW);
+
+
+
+    $app->get('/dashboard/usuario/editar[/{id:.*}]', function ($request, $response, $args) use ($tpl, $templates) {
+        $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/usuario/editar_perfil']);
+        
+        if(!empty($args['id'])){
+            $usuario = new Usuario($args['id']);
+            $tpl->NOME = $usuario->usuario['nome'];
+            $tpl->EMAIL = $usuario->usuario['email'];
+            $tpl->SENHA = $usuario->usuario['senha'];
+            $tpl->GENERO = $usuario->usuario['genero'];
+            $tpl->TELEFONE = $usuario->usuario['telefone'];
+            $tpl->NASCIMENTO = $usuario->usuario['data_nascimento'];
+            $tpl->PREFERENCIAS = $usuario->usuario['preferencias'];
+
+        }
+
+        $tpl->show();
+    })->add($dashboardMW);
+
+    $app->post('/dashboard/usuario/editar[/{id:.*}]', function ($request, $response, $args) use ($tpl, $templates) {
+        $tpl->addFile("CONTEUDO_DASHBOARD", $templates['dashboard/usuario/editar_perfil']);
+        $error = 0;
+        
+        foreach($_POST as $input=>$value){
+            if(empty($value)){
+                $tpl->addFile("MESSAGE", $templates['messages/error']);
+                $tpl->MESSAGE_ERROR_TEXT = "Formulário $input Vazio!";
+                $tpl->block("BLOCK_MESSAGE");
+    
+                $error = 1;
+            }
+        }
+        
+        if($error == 0){
+            $usuarioController = new Usuario();    
+            if($usuarioController->editar($_POST, $args['id'])){
+                return $response->withRedirect($this->router->pathFor('dashboard')); 
+            }
+            }
+        $tpl->show();
+    })->add($dashboardMW);

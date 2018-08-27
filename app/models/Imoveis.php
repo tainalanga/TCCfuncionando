@@ -22,10 +22,10 @@
                 "numero"            => $imovel['Número'], 
                 "endereco"          => $imovel['Endereço'], 
                 "descricao"         => $imovel['Descrição'], 
-                "tipo"              => $imovel['Tipo_Imovel'],
+                "tipo"              => $imovel['Tipo'],
                 "limite_pessoas"    => $imovel['Limite_de_pessoas'],
                 "usuario_id"        => $_SESSION['user'], 
-                "universidades_id"  => 1        
+                "universidades_id"  => $imovel['Universidade']   
             ]);
 
             move_uploaded_file($_FILES['Foto_Imovel']['tmp_name'], "uploads/" . $this->medoo->id() . '.jpg');
@@ -41,11 +41,17 @@
                 "descricao"         => $imovel['Descrição'], 
                 "limite_pessoas"    => $imovel['Limite_de_pessoas'],
                 "usuario_id"        => $_SESSION['user'], 
-                "universidades_id"  => 1        
+                "universidades_id"  => $imovel['Universidade'],  
+                "tipo"              => $imovel['Tipo']
             ], [
                 'id' => $id
             ]);
 
             return true;
         }
+    //     public function buscarUniversidade($imovel, $id)
+    //     {
+    //         $this->imovel = $this->medoo->select("imovel", '*',[
+    //                 "id" => $id
+    //             ])[0];
     }
